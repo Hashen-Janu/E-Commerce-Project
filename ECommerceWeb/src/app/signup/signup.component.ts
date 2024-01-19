@@ -24,6 +24,7 @@ export class SignupComponent {
        name: [null, [Validators.required]],
        email: [null, [Validators.required, Validators.email]],
        password: [null, [Validators.required]],
+       confirmPassword: [null, [Validators.required]],
      })
    }
   togglePasswordVisibility(){
