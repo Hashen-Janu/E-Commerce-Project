@@ -25,9 +25,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
 
+
 @Controller
 @RequiredArgsConstructor
 public class AuthController {
+
+
 
     private final AuthenticationManager authenticationManager;
 
@@ -62,10 +65,14 @@ public class AuthController {
                     .toString()
             );
 
+            response.addHeader("Access-Control-Expose-Headers","Authorization");
+            response.addHeader("Access-Control-Allow-Headers", "Authorization,X-PINGOTHER,Origin, "+
+                    "X-Requested-With, Content-type,Accept, X-Custom-header");
             response.addHeader(HEADER_STRING, TOKEN_PREFIX + jwt);
         }
 
     }
+
     @PostMapping("/sign-up")
     public ResponseEntity<?> signupUser(@RequestBody SignupRequest signupRequest){
 
